@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_nav_graph"
+    app:startDestination="@id/moviesListFragment">
+
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="com.example.testnavcomponant.ui.MoviesListFragment"
+        android:label="fragment_movies_list"
+        tools:layout="@layout/fragment_movies_list" >
+        <action
+            android:id="@+id/action_moviesListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <argument
+            android:name="MovieID"
+            app:argType="integer"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/tvListFragment"
+        android:name="com.example.testnavcomponant.ui.TvListFragment"
+        android:label="fragment_tv_list"
+        tools:layout="@layout/fragment_tv_list" >
+        <action
+            android:id="@+id/action_tvListFragment_to_tvShowDetailsFragment"
+            app:destination="@id/tvShowDetailsFragment" />
+        <argument
+            android:name="tvId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.testnavcomponant.ui.MovieDetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_recommendationBottomSheetFragment"
+            app:destination="@id/recommendationBottomSheetFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/detailsFragment"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="ID"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tvShowDetailsFragment"
+        android:name="com.example.testnavcomponant.ui.TvShowDetailsFragment"
+        android:label="fragment_tv_show_details"
+        tools:layout="@layout/fragment_tv_show_details" >
+        <argument
+            android:name="MovieID"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/recommendationBottomSheetFragment"
+        android:name="com.example.testnavcomponant.ui.RecommendationBottomSheetFragment"
+        android:label="fragment_recommendation_bottom_sheet"
+        tools:layout="@layout/fragment_recommendation_bottom_sheet" >
+        <action
+            android:id="@+id/action_recommendationBottomSheetFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+</navigation>
